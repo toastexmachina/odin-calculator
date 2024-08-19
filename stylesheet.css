@@ -1,11 +1,30 @@
+* {
+
+}
+
+body{
+    box-sizing: border-box;
+}
+
 #boundary {
     background-color: gray;
     margin-left: auto;
     margin-right: auto;
     max-width: fit-content;
     max-height: fit-content;
+    padding: 2px;
 }
 
 #display {
     background-color: rgb(182, 176, 176);
+    max-width: auto;
+    height: 50px;
+    margin: 2px;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    margin: 2px;
+    margin-inline: 1px;
 }
