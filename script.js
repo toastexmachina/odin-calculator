@@ -21,6 +21,8 @@ let operate = function (x, y, z){
     }
 }
 
+const display = document.querySelector('#display');
+
 // Define operation variables
 const add = document.querySelector('#add');
 const subtract = document.querySelector('#subtract');
@@ -39,3 +41,6 @@ const eight = document.querySelector('#eight');
 const nine = document.querySelector('#nine');
 
 // Button Event Listeners -> display text content
+one.addEventListener("click", function(){
+    display.textContent = "1";
+})
