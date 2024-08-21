@@ -8,6 +8,7 @@
 */
 
 // Operate function
-let operate = function {
-    
+// takes an operator and 2 numbers and produces an outcome 
+let operate = function (x, y, z){
+    if (z = )
 }
