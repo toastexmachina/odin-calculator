@@ -16,6 +16,7 @@ let operate = function (x, y, z){
 
 const display = document.querySelector('#display');
 const equal = document.querySelector(".equal");
+const clear = document.querySelector(".clear");
 
 // Define operation variables
 const add = document.querySelector('#add');
@@ -46,6 +47,12 @@ numbers.forEach(function(number){
         array.push(number.textContent); // pushes the number to the display array
         display.textContent = array.join('').toString(); 
     });
+})
+
+// Event Listener for clear button
+clear.addEventListener("click", function(){
+    array = [];
+    display.textContent = array.join('').toString(); 
 })
 
 /*
