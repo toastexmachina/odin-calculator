@@ -28,7 +28,7 @@ const nine = document.querySelector('#nine');
 
 let array = [];
 
-// Adds event listener to every number button
+// Displays numbers when a number button is clicked
 const numbers = document.querySelectorAll(".number");
 numbers.forEach(function(number){
     number.addEventListener("click", function(){
@@ -37,17 +37,14 @@ numbers.forEach(function(number){
     });
 })
 
-// Event Listener for clear button
+// Clears the display and display array when clear button is clicked
 clear.addEventListener("click", function(){
     array = [];
     display.textContent = array.join('').toString(); 
+    entries = [undefined, undefined];
 })
 
-// OPERATIONS
-
-// Operate function
-// takes an operator and 2 numbers and produces an outcome 
-
+// Main operate function
 let operate = function (x, y, z){
     if (z === add){
         return x+y;
@@ -60,11 +57,13 @@ let operate = function (x, y, z){
     }
 }
 
+let entry1; // sets first parameter for operate function
+let entry2; // sets second parameter for operate function
+let operator; // sets operation parameter for operate function
 
-let entry1;
-let entry2;
-let operator;
+let entries = [entry1, entry2]; // arranges operands/parameters
 
+// Sets the operation parameter when the operation button is clicked
 add.addEventListener('click', function(){
     operator = add; 
 })
@@ -78,28 +77,42 @@ multiply.addEventListener('click', function(){
     operator = multiply;
 })
 
+
 operation.forEach(function(operatorID){
     operatorID.addEventListener('click', function(){
-        entry1 = Number(display.textContent);
+        entry = Number(display.textContent);
         array = [];
-        entry2 = 10; // NEXT TIME! Figure out how to store entry2
-        display.textContent = operate(entry1, entry2, operator);
+
+        // shifts the operands up with each new entry
+        entries.shift();
+        entries.push(entry);
+
+        console.log(entries); // track operands during operations
+
+        // prevents operate function from executing on the first iteration
+        if (entries[0] && entries[1]){ 
+            display.textContent = operate(entries[0], entries[1], operator);
+            entries.shift();
+            entries.push(Number(display.textContent));
+        } else {
+            entries.shift();
+            entries.push(Number(display.textContent));
+        } 
     });
 })
 
 
-/*
-- Operation OR equals event listener 
-    -> store displayed value as entry2 value 
-    -> store operator as operation value
-    -> execute operation(entry1, entry2, operation)
-    */
-/* 
-PLAN LOOK HERE FIRST
-- Operation event listener -> store displayed value as entry1 value
-- Build new text display
-- Operation OR equals event listener 
-    -> store displayed value as entry2 value 
-    -> store operator as operation value
-    -> execute operation(entry1, entry2, operation)
-*/
+equal.addEventListener('click', function(){
+    entry = Number(display.textContent);
+    array = [];
+
+    entries.shift();
+    entries.push(entry);
+    console.log(entries);
+    
+    display.textContent = operate(entries[0], entries[1], operator);
+    entries.shift();
+    entries.push(undefined);
+}) 
+
+// MUST FIX BUG WHERE PRESSING OPERATIONS TWICE DOES NOTHING
