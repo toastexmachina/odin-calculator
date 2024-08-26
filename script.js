@@ -33,7 +33,11 @@ const numbers = document.querySelectorAll(".number");
 numbers.forEach(function(number){
     number.addEventListener("click", function(){
         array.push(number.textContent); // pushes the number to the display array
-        display.textContent = array.join('').toString(); 
+        display.textContent = array.join('').toString();
+
+        operation.forEach(function(operationID){
+            operationID.style.backgroundColor = "rgb(235, 128, 70)"
+        })
     });
 })
 
@@ -80,6 +84,10 @@ multiply.addEventListener('click', function(){
 
 operation.forEach(function(operatorID){
     operatorID.addEventListener('click', function(){
+        // changes button color
+        // rgb(235, 128, 70)
+        operatorID.style.backgroundColor = "rgb(179, 77, 46)"; 
+        
         entry = Number(display.textContent);
         array = [];
 
@@ -97,7 +105,7 @@ operation.forEach(function(operatorID){
         } else {
             entries.shift();
             entries.push(Number(display.textContent));
-        } 
+        };  
     });
 })
 
