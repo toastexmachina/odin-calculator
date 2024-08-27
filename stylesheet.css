@@ -19,15 +19,16 @@ body{
 #display {
     border-radius: 5px;
     background-color: rgb(182, 176, 176);
-    max-width: auto;
-    height: 50px;
+    max-width: 216px;
+    height: auto;
+    min-height: 50px;
     margin: 2px;
 
     color: rgb(52, 52, 52);
     font-family:'Courier New', Courier, monospace;
     font-size: 50px;
     text-align: right;
-    
+    word-wrap: break-word;
 }
 
 button {
