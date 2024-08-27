@@ -56,6 +56,8 @@ let operate = function (x, y, z){
         return x-y;
     } else if (z === multiply) {
         return x*y;
+    } else if (y === 0 && z === divide) {
+        return "Excuse me? Can't divide by zero?";
     } else if (z === divide) {
         return x/y;
     }
